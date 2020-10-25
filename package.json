@@ -1,0 +1,37 @@
+{
+  "name": "snookercounter",
+  "version": "1.0.0",
+  "description": "Keep track of your snooker game's score!",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thpapei/snookercounter.git"
+  },
+  "keywords": [
+    "snooker",
+    "score",
+    "counter"
+  ],
+  "author": "Thomas Pappas",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/thpapei/snookercounter/issues"
+  },
+  "homepage": "https://github.com/thpapei/snookercounter#readme",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.27.0"
+  }
+}
