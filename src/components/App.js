@@ -1,4 +1,5 @@
 import React from 'react';
+import Controls from './Controls';
 import Information from './Information';
 import Player from './Player';
 import Players from './Players';
@@ -11,8 +12,7 @@ const App = (props) => (
       <Player name='George' score={23} gamesWon={1} />
     </Players>
     <Information currentFrame={3} frames={5} reds={6} difference={5} />
-
-
+    <Controls />
   </div>)
 
 export default App;
