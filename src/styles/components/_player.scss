@@ -1,0 +1,48 @@
+.player_container {
+  margin: 0 $xxs-size;
+  padding: $xxs-size;
+  transition: border-color 200ms ease-in-out;
+
+  .selected {
+    border: 3px solid $off-white;
+  }
+
+  .player_score {
+    border: 2px solid $grey;
+    border-radius: 3px;
+    transition: border-color 200ms ease-in-out;
+
+    &:hover,
+    &:active {
+    border-color: $off-white;
+    }
+
+
+    
+    p {      
+      font-size: $l-size;
+      margin: $xs-size;
+      text-align: center;      
+    }
+  }
+
+  input {
+    background-color: transparent;
+    border: none;    
+    border-radius: 3;
+    color: inherit;
+    font: inherit;
+    font-size: $s-size;
+    text-align: center;
+    transition: background-color 100ms ease-in-out;
+
+    &:hover,
+    &:active {
+      background-color: rgba(255, 255, 255, 0.26);
+    }
+  }
+
+  .player_games_won {
+    text-align: center;
+  }
+}
