@@ -1,5 +1,19 @@
-body {
-  background-image: url('../../public/images/background.jpg');
-  background-size: cover;
-  color: $off-white;
+/* cinzel-regular - latin */
+ @font-face {
+   font-family: 'Cinzel';
+   font-style: normal;
+   font-weight: 400;
+   src: local('Cinzel'),
+        url('../../src/assets/fonts/cinzel-v10-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../../src/assets/fonts/cinzel-v10-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
+
+body {
+  background-image: url('../../src/assets/images/background.jpg');
+  background-size: cover;
+  color: $off-white;  
+  font-family: Cinzel;
+  font-weight: bold;
+}
+
