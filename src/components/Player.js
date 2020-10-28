@@ -20,7 +20,7 @@ const Player = ({ name, score, gamesWon, activePlayer }) => {
     <div className='player_container'>
       <div className='player_score' style={activePlayer === name ? style : null} onClick={() => handleActivePlayer} ><p>{score}</p></div>
       <input value={name} onChange={handleNameChange} />
-      <div className='player_games_won'>Frames Won: {gamesWon}</div>
+      <div className='player_frames_won'>Frames Won: {gamesWon}</div>
     </div>);
 };
 

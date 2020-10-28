@@ -1,4 +1,4 @@
-.player_container {
+.player_container {  
   margin: 0 $xxs-size;
   padding: $xxs-size;
   transition: border-color 200ms ease-in-out;
@@ -10,14 +10,13 @@
   .player_score {
     border: 2px solid $grey;
     border-radius: 3px;
+    cursor: pointer;
     transition: border-color 200ms ease-in-out;
 
     &:hover,
     &:active {
     border-color: $off-white;
     }
-
-
     
     p {      
       font-size: $l-size;
@@ -42,7 +41,8 @@
     }
   }
 
-  .player_games_won {
+  .player_frames_won {
     text-align: center;
+    cursor: default;
   }
 }
