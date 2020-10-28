@@ -5,7 +5,7 @@ const Information = ({ currentFrame, frames, reds, difference }) => {
 
   return (
     <>
-      <div className='meta-info'>
+      <div className='information'>
         <h3>Game</h3>
         <p>Frame: {currentFrame} of {frames}</p>
         <p>Reds: {reds}</p>
