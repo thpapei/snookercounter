@@ -1,36 +1,40 @@
 .controls {  
   display: flex;
   justify-content: center;
-  height: 100px;
   min-width: 450px;
 
-  .control {        
-    align-items: center;
-    border: 1px  $off-white solid;  
-    border-radius: 50%;
-    box-sizing: content-box;
-    cursor: pointer;
-    display: flex;    
-    justify-content: center;
-    margin: 3px;
-    width: 30px;
-    height: 30px;
-    padding: 4px;    
-    transition: background-color 100ms ease-in-out;
+}
+.control {        
+  align-items: center;
+  background-color: rgba(192, 192, 192, 0);
+  border: 2px  $off-white solid;  
+  border-radius: 50%;
+  box-sizing: content-box;
+  cursor: pointer;
+  display: flex;    
+  justify-content: center;
+  margin: 3px;
+  width: 30px;
+  height: 30px;
+  padding: 4px;    
+  transition: background-color 100ms ease-in-out;
+  -webkit-user-select: none; /* for safari & chrome browsers */
+  -moz-user-select: none; /* for mozilla browsers */
+  -khtml-user-select: none; /* for konqueror browsers */
+  -ms-user-select: none; /* for IE10+ */
 
-    &:hover,
-    &:active {      
-      background-color: rgba(255, 255, 255, 0.089);
-    }
+  &:hover,
+  &:active {      
+    background-color: rgba(192, 192, 192, 0.541);
+  }
 
-    img{
-      max-width: 100%;
-      max-height: 100%;      
-      object-fit: contain;
-    }
+  img{
+    max-width: 100%;
+    max-height: 100%;      
+    object-fit: contain;
+  }
 
-    p {
-      margin: 0;
-    }
+  p {
+    margin: 0;
   }
 }
