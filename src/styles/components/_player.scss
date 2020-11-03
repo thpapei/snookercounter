@@ -1,7 +1,7 @@
 .player_container {  
   margin: 0 $xxs-size;
   padding: $xxs-size;
-  transition: border-color 200ms ease-in-out;
+  transition: border-color 200ms ease-in-out;  
 
   .selected {
     border: 3px solid $off-white;
@@ -10,6 +10,7 @@
   .player_score {
     border: 2px solid $grey;
     border-radius: 3px;
+    box-sizing: border-box;
     cursor: pointer;
     transition: border-color 200ms ease-in-out;
 
