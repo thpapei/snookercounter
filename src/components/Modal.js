@@ -21,7 +21,7 @@ const Modal = (props) => {
     <div className='overlay' onClick={handleClose}>
       <div className='modal'>
         {props.children}
-        <div className='controls'>
+        <div className='confirm-buttons'>
           <div className='control confirm'><img src={confirm} onClick={handleConfirm} /></div>
           <div className='control cancel'><img src={cancel} onClick={handleClose} /></div>
         </div>
