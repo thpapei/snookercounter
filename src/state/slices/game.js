@@ -44,23 +44,31 @@ const undoable = (reducer) => {
   }
 }
 
+const initialState = {
+  player1Name: '',
+  player2Name: '',
+  activePlayerId: 1,
+  totalFrames: 3,
+  gameStarted: false,
+  currentFrame: 0,
+  numberOfReds: 15,
+  currentBreak: [],
+  frames: []
+
+}
+
 const gameSlice = createSlice({
   name: 'game',
-  initialState: {
-    activePlayerId: 1,
-    totalFrames: 3,
-    gameStarted: false,
-    currentFrame: 1,
-    numberOfReds: 15,
-    currentBreak: [],
-    frames: []
-  },
+  initialState,
   reducers: {
-    setActivePlayerId: (state, action) => { state.activePlayerId = action.payload; }
+    setActivePlayerId: (state, action) => { state.activePlayerId = action.payload; },
+    setReds: (state, action) => { state.numberOfReds = action.payload },
+    setPlayer1Name: (state, action) => { state.player1Name = action.payload },
+    setPlayer2Name: (state, action) => { state.player2Name = action.payload }
   }
 });
 
-export const { setActivePlayerId } = gameSlice.actions;
+export const { setActivePlayerId, setReds, setPlayer1Name, setPlayer2Name } = gameSlice.actions;
 export const { undo } = { type: 'game/undo' }
 export const { redo } = { type: 'game/redo' }
 export default undoable(gameSlice.reducer);
