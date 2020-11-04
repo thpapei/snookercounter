@@ -62,6 +62,12 @@ const gameSlice = createSlice({
   reducers: {
     setActivePlayerId: (state, action) => { state.activePlayerId = action.payload; },
     setReds: (state, action) => { state.numberOfReds = action.payload },
+    pocketRed: (state, action) => {
+      if (numberOfReds > 0) {
+        state.numberOfReds--;
+        frames[currentFrame][playerId].score += 1;
+      }
+    },
     setPlayer1Name: (state, action) => { state.player1Name = action.payload },
     setPlayer2Name: (state, action) => { state.player2Name = action.payload },
     addFrame: (state, action) => { state.frames.push(action.payload) }
