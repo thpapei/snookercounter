@@ -54,7 +54,6 @@ const initialState = {
   numberOfReds: 15,
   currentBreak: [],
   frames: []
-
 }
 
 const gameSlice = createSlice({
@@ -64,7 +63,8 @@ const gameSlice = createSlice({
     setActivePlayerId: (state, action) => { state.activePlayerId = action.payload; },
     setReds: (state, action) => { state.numberOfReds = action.payload },
     setPlayer1Name: (state, action) => { state.player1Name = action.payload },
-    setPlayer2Name: (state, action) => { state.player2Name = action.payload }
+    setPlayer2Name: (state, action) => { state.player2Name = action.payload },
+    addFrame: (state, action) => { state.frames.push(action.payload) }
   }
 });
 
