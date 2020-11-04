@@ -8,7 +8,6 @@ const Player = ({ name, score, gamesWon, activePlayerId, id }) => {
   const [username, setUsername] = useState(name);
 
   const handleNameChange = e => {
-    console.log(e.target.value);
     setUsername(e.target.value);
   }
 
