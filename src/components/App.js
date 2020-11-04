@@ -3,17 +3,21 @@ import Balls from './Balls';
 import Controls from './Controls';
 import Information from './Information';
 import Players from './Players';
-import { Provider } from 'react-redux';
-import store from '../state/createStore';
+import { useSelector } from 'react-redux';
 
-const App = (props) => (
-  <div className='app'>
-    <Provider store={store}>
+
+const App = (props) => {
+
+  const gameStarted = useSelector(state => state.game.gameStarted);
+  console.log(gameStarted);
+
+  return (
+    <div className='app'>
       <Players />
       <Information currentFrame={3} frames={5} reds={6} difference={5} />
       <Balls />
       <Controls />
-    </Provider>
-  </div>)
+    </div >)
+}
 
 export default App;
