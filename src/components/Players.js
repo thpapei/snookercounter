@@ -4,7 +4,7 @@ import Player from './Player';
 
 const Players = () => {
 
-  const activePlayerId = useSelector(state => state.game.activePlayerId)
+  const activePlayerId = useSelector(state => state.game.present.activePlayerId)
 
   return (
     <div className='players'>
