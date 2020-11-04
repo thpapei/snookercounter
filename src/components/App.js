@@ -8,7 +8,7 @@ import Modal from './Modal';
 
 
 const App = (props) => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isStartGameModalOpen, setIsStartGameModalOpen] = useState(false);
 
   const gameStarted = useSelector(state => state.game.gameStarted);
 
@@ -17,8 +17,8 @@ const App = (props) => {
       <Players />
       <Information currentFrame={3} frames={5} reds={6} difference={5} />
       <Balls />
-      <Controls />
-      {isModalOpen && <Modal setIsModalOpen={setIsModalOpen}><p>Start new game?</p></Modal>}
+      <Controls setIsModalOpen={setIsStartGameModalOpen} />
+      {isStartGameModalOpen && <Modal setIsModalOpen={setIsStartGameModalOpen}><p>Start new game?</p></Modal>}
     </div >)
 }
 

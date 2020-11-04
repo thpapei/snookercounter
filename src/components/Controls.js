@@ -10,7 +10,7 @@ const Controls = (props) => {
   return (
     <div className='controls'>
       <div className='control restart-frame'><img src={restart} alt='Restart Frame' /></div>
-      <div className='control end-game'><img src={finish} alt='End game' /></div>
+      <div className='control end-game' onClick={() => props.setIsModalOpen(true)}><img src={finish} alt='End game' /></div>
       <div className='control show-breaks'><img src={history} alt='Show history' /></div>
       <div className='control undo'><img src={undo} alt='Undo' /></div>
       <div className='control redo'><img src={redo} alt='Redo' /></div>
