@@ -5,6 +5,7 @@ import Information from './Information';
 import Players from './Players';
 import { useSelector } from 'react-redux';
 import Modal from './Modal';
+import NewGameForm from './NewGameForm';
 
 
 const App = (props) => {
@@ -19,7 +20,12 @@ const App = (props) => {
       <Information currentFrame={3} frames={5} numberOfReds={numberOfReds} difference={5} />
       <Balls />
       <Controls setIsModalOpen={setIsStartGameModalOpen} />
-      {isStartGameModalOpen && <Modal setIsModalOpen={setIsStartGameModalOpen}><p>Start new game?</p></Modal>}
+      {!gameStarted && isStartGameModalOpen ?
+        <Modal setIsModalOpen={setIsStartGameModalOpen}>
+          <NewGameForm />
+        </Modal>
+        :
+        null}
     </div >)
 }
 
