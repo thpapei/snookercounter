@@ -1,0 +1,49 @@
+input {
+  background-color: transparent;
+  border: none;    
+  border-radius: 3px;
+  color: inherit;
+  font: inherit;
+  font-size: $s-size;
+  text-align: center;
+  transition: background-color 100ms ease-in-out;  
+  width: auto;  
+  &:hover,
+  &:active {
+    background-color: $hover-color;
+  }
+}
+
+select {
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid $off-white;
+  border-radius: 3px;
+  color: $off-white;
+  cursor: pointer;
+  font: inherit;
+  text-align: center;
+  width: 50%;
+
+  &:hover,
+  &:active {
+    background-color: $hover-color;
+  }
+}
+
+.error-message {
+  color: red;
+}
+
+.form-fields {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: $xs-size;
+}
+
+.confirm-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

@@ -20,9 +20,9 @@ const App = (props) => {
       <Information currentFrame={3} frames={5} numberOfReds={numberOfReds} difference={5} />
       <Balls />
       <Controls setIsModalOpen={setIsStartGameModalOpen} />
-      {!gameStarted && isStartGameModalOpen ?
+      {isStartGameModalOpen ?
         <Modal setIsModalOpen={setIsStartGameModalOpen}>
-          <NewGameForm />
+          <NewGameForm setIsModalOpen={setIsStartGameModalOpen} />
         </Modal>
         :
         null}
