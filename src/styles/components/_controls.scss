@@ -5,8 +5,7 @@
 
 }
 .control {        
-  align-items: center;
-  background-color: rgba(192, 192, 192, 0);
+  align-items: center;  
   border: 2px  $off-white solid;  
   border-radius: 50%;
   box-sizing: content-box;
@@ -25,7 +24,7 @@
 
   &:hover,
   &:active {      
-    background-color: rgba(192, 192, 192, 0.541);
+    background-color: $hover-color;
   }
 
   img{
