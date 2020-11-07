@@ -18,7 +18,7 @@ const Information = () => {
       )
     }
     else {
-      return 0
+      return 0;
     }
   });
   const activeFrame = useSelector(state => state.game.present.activeFrame + 1);
@@ -27,12 +27,18 @@ const Information = () => {
   return (
     <>
       <div className='information'>
-        <h3>Game</h3>
-        <p>Frame: {activeFrame} of {totalFrames}</p>
-        <p>Reds: {numberOfReds}</p>
-        <p>Points Remaining: {pointsRemaining}</p>
-        <p>Difference: {difference}</p>
-        {(difference > pointsRemaining) && <p className='important'>Snookers Required Stage</p>}
+        <div className='information__item'><p>Frame: </p><p>{activeFrame} of {totalFrames}</p></div>
+        <div className='information__item'><p>Reds: </p><p>{numberOfReds}</p></div>
+        <div className='information__item'><p>Points Remaining:</p><p> {pointsRemaining}</p></div>
+        <div className='information__item'><p>Difference: </p><p>{difference}</p></div>
+
+        {
+          (difference > pointsRemaining)
+          &&
+          <div className='information__item-single'>
+            <p className='important'>Snookers Required Stage</p>
+          </div>
+        }
       </div>
     </>
   )

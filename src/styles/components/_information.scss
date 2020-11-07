@@ -1,3 +1,20 @@
+.information {
+  display: flex;
+  flex-direction: column;  
+  width: 100%;
+
+  .information__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .information__item-single {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .important {
   color: red;
   animation: changeColor;
