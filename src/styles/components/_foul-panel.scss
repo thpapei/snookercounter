@@ -1,0 +1,10 @@
+.foul-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  p {
+    position: absolute;
+  }
+}
