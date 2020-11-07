@@ -1,11 +1,12 @@
 .controls {  
-  display: flex;
+  display: flex;  
   justify-content: center;
   min-width: 450px;
 
 }
 .control {        
   align-items: center;  
+  background-color: transparent;
   border: 2px  $off-white solid;  
   border-radius: 50%;
   box-sizing: content-box;
