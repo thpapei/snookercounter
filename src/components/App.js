@@ -17,7 +17,7 @@ const App = (props) => {
   const gameStarted = useSelector(state => state.game.present.gameStarted);
 
   return (
-    <div className='app'>
+    <>
       <Players />
       <Information currentFrame={3} frames={5} difference={5} />
       {gameStarted ?
@@ -46,7 +46,7 @@ const App = (props) => {
           null
       }
 
-    </div >)
+    </>)
 }
 
 export default App;

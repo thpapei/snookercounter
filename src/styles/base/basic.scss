@@ -10,9 +10,12 @@
 
 
 body {  
+  align-items: center;
   background-image: url('../../src/assets/images/background.jpg');
   background-size: cover;
   color: $off-white;  
+  display: flex;
+  flex-direction: column;  
   font-family: Cinzel;
   font-size: $xs-size;
   font-weight: bold;
