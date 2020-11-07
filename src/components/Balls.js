@@ -11,7 +11,7 @@ import { useConfirmAudio } from '../utilities/sound';
 import { useDispatch } from 'react-redux';
 import { pocketRed, pocketColoredBall } from '../state/slices/game';
 
-const Balls = (props) => {
+const Balls = ({ setIsModalOpen }) => {
   const confirmAudio = useConfirmAudio();
   const dispatch = useDispatch();
 
@@ -35,7 +35,7 @@ const Balls = (props) => {
         <div className='control ball blue' onClick={() => handlePocketColoredBall('blue')}><img src={blue} alt='Blue ball' /></div>
         <div className='control ball pink' onClick={() => handlePocketColoredBall('pink')}><img src={pink} alt='Pink ball' /></div>
         <div className='control ball black' onClick={() => handlePocketColoredBall('black')}><img src={black} alt='Black ball' /></div>
-        <div className='control ball white' onClick={() => handlePocketColoredBall(7)}><img src={white} alt='White ball' /></div>
+        <div className='control ball white' onClick={() => setIsModalOpen(true)}><img src={white} alt='White ball' /></div>
       </div>
     </>
   )
