@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setActivePlayerId } from '../state/slices/game';
 
-const Player = ({ score, gamesWon, activePlayerId, id }) => {
+const Player = ({ activePlayerId, id }) => {
   const dispatch = useDispatch();
+  const name = useSelector(state => state.game.present[`${id}`].name);
+  const score = useSelector(state => {
+    if (state.game.present.frames.length > 0) {
+      return state.game.present.frames[state.game.present.activeFrame][`${id}`].score
+    } else {
+      return 0;
+    }
+  });
+  const framesWon = useSelector(state => state.game.present[`${id}`].framesWon);
 
   const [username, setUsername] = useState(name);
 
@@ -24,7 +33,7 @@ const Player = ({ score, gamesWon, activePlayerId, id }) => {
     <div className='player_container'>
       <div className='player_score' style={activePlayerId === id ? style : null} onClick={handleActivePlayer} ><p>{score}</p></div>
       <input value={username} onChange={handleNameChange} placeholder={`Player ${id}`} />
-      <div className='player_frames_won'>Frames Won: {gamesWon}</div>
+      <div className='player_frames_won'>Frames Won: {framesWon}</div>
     </div>);
 };
 
