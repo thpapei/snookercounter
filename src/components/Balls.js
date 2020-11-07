@@ -10,8 +10,7 @@ import yellow from '../assets/images/yellow.png';
 
 const Balls = (props) => {
   const pocketBall = points => {
-    // dispatch points
-    setRedVisible(!redVisible);
+    // dispatch points    
   }
 
   return (
