@@ -7,7 +7,7 @@ import cancel from '../assets/images/cancel.png';
 import { startGame } from '../state/slices/game';
 import { useStartGameAudio } from '../utilities/sound';
 
-const NewGameForm = (props) => {
+const NewGameForm = ({ setIsModalOpen }) => {
   const dispatch = useDispatch();
   const startGameAudio = useStartGameAudio();
 
@@ -35,7 +35,7 @@ const NewGameForm = (props) => {
           totalFrames: parseInt(totalFrames),
           gameStarted: true
         }));
-        props.setIsModalOpen(false);
+        setIsModalOpen(false);
         startGameAudio.play();
       }}
     >
@@ -82,7 +82,7 @@ const NewGameForm = (props) => {
 
         <div className='confirm-buttons form-fields' >
           <button className='control confirm' type='submit'><img src={confirm} /></button>
-          <button className='control cancel' onClick={() => props.setIsModalOpen(false)}> <img src={cancel} /></button>
+          <button className='control cancel' onClick={() => setIsModalOpen(false)}> <img src={cancel} /></button>
         </div>
       </Form>
     </Formik >
