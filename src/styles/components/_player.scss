@@ -1,6 +1,4 @@
-.player_container {  
-  margin: 0 $xxs-size;
-  padding: $xxs-size;
+.player_container {    
   transition: border-color 200ms ease-in-out;  
 
   .selected {
@@ -24,6 +22,14 @@
       margin: $xs-size;
       text-align: center;      
     }
+  }
+
+  .player_score1 {
+    margin-right: $xs-size;
+  }
+
+  .player_score2 {
+    margin-left: $xs-size;
   }
 
   .player_frames_won {
