@@ -10,7 +10,7 @@ const undoable = (reducer) => {
 
   // Return a reducer that handles undo and redo
   return function (state = initialState, action) {
-    const { past, present, future } = state
+    const { past, present, future } = state;
 
     switch (action.type) {
       case 'game/undo':
