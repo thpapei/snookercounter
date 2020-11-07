@@ -8,8 +8,8 @@ const Players = () => {
 
   return (
     <div className='players'>
-      <Player name='Thomas' score={0} gamesWon={2} activePlayerId={activePlayerId} id={1} />
-      <Player name='George' score={23} gamesWon={1} activePlayerId={activePlayerId} id={2} />
+      <Player id={1} score={0} gamesWon={2} activePlayerId={activePlayerId} />
+      <Player id={2} score={23} gamesWon={1} activePlayerId={activePlayerId} />
     </div>);
 }
 
