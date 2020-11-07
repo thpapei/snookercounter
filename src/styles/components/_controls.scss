@@ -6,7 +6,7 @@
 }
 .control {        
   align-items: center;  
-  background-color: transparent;
+  background-color: $dark-green;
   border: 2px  $off-white solid;  
   border-radius: 50%;
   box-sizing: content-box;
@@ -48,5 +48,5 @@
 
 @keyframes callToAction {
   from {background-color: transparent}
-  to {background-color: $off-white}
+  to {background-color: green}
 }
