@@ -74,7 +74,7 @@ const gameSlice = createSlice({
         frames[currentFrame][playerId].score += 1;
       }
     },
-    setPlayerName: (state, action) => { state.[`${action.payload.id}`].name = action.payload.name },
+    setPlayerName: (state, action) => { state[`${action.payload.id}`].name = action.payload.name },
     startGame: (state, { payload }) => {
       state['1'].name = payload['1'];
       state['2'].name = payload['2'];
