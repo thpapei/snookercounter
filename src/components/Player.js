@@ -25,7 +25,6 @@ const Player = ({ id }) => {
 
   const style = {
     borderColor: "white",
-    borderWidth: "4px"
   }
 
   return (
