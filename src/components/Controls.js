@@ -6,7 +6,7 @@ import finishIcon from '../assets/images/finish.png';
 import historyIcon from '../assets/images/history.png';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Controls = (props) => {
+const Controls = () => {
   const dispatch = useDispatch();
 
   const pastLength = useSelector(state => state.game.past.length);
@@ -32,7 +32,7 @@ const Controls = (props) => {
         <span className="tooltiptext tooltiptext-bottom">Restart frame</span>
       </div>
 
-      <div className='control end-game tooltip' onClick={() => props.setIsModalOpen(true)}>
+      <div className='control end-game tooltip'>
         <img src={finishIcon} alt='End game' />
         <span className="tooltiptext tooltiptext-bottom">End game</span>
       </div>
