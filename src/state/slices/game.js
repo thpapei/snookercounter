@@ -45,8 +45,14 @@ const undoable = (reducer) => {
 }
 
 const initialState = {
-  player1Name: '',
-  player2Name: '',
+  player1: {
+    name: '',
+    id: 1
+  },
+  player2: {
+    name: '',
+    id: 2
+  },
   activePlayerId: 1,
   totalFrames: 3,
   gameStarted: false,
