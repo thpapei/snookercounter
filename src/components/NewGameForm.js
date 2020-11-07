@@ -77,10 +77,10 @@ const NewGameForm = (props) => {
 
         <div className='confirm-buttons form-fields' >
           <button className='control confirm' type='submit'><img src={confirm} /></button>
-          <button className='control cancel'><img src={cancel} onClick={() => props.setIsModalOpen(false)} /></button>
+          <button className='control cancel' onClick={() => props.setIsModalOpen(false)} > <img src={cancel} /></button>
         </div>
       </Form>
-    </Formik>
+    </Formik >
   )
 }
 

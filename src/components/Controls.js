@@ -42,13 +42,13 @@ const Controls = (props) => {
         <span className="tooltiptext tooltiptext-bottom">Show history of breaks</span>
       </div>
 
-      <div className='control undo tooltip'>
-        <img src={undoIcon} alt='Undo' onClick={handleUndo} />
+      <div className='control undo tooltip' onClick={handleUndo}>
+        <img src={undoIcon} alt='Undo' />
         <span className="tooltiptext tooltiptext-bottom">Undo</span>
       </div>
 
-      <div className='control redo tooltip'>
-        <img src={redoIcon} alt='Redo' onClick={handleRedo} />
+      <div className='control redo tooltip' onClick={handleRedo}>
+        <img src={redoIcon} alt='Redo' />
         <span className="tooltiptext tooltiptext-bottom">Redo</span>
       </div>
     </div>
