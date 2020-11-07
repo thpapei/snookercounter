@@ -27,11 +27,30 @@ const Controls = (props) => {
 
   return (
     <div className='controls'>
-      <div className='control restart-frame'><img src={restartIcon} alt='Restart Frame' /></div>
-      <div className='control end-game' onClick={() => props.setIsModalOpen(true)}><img src={finishIcon} alt='End game' /></div>
-      <div className='control show-breaks'><img src={historyIcon} alt='Show history' /></div>
-      <div className='control undo'><img src={undoIcon} alt='Undo' onClick={handleUndo} /></div>
-      <div className='control redo'><img src={redoIcon} alt='Redo' onClick={handleRedo} /></div>
+      <div className='control restart-frame tooltip' >
+        <img src={restartIcon} alt='Restart Frame' />
+        <span class="tooltiptext tooltiptext-bottom">Restart frame</span>
+      </div>
+
+      <div className='control end-game tooltip' onClick={() => props.setIsModalOpen(true)}>
+        <img src={finishIcon} alt='End game' />
+        <span class="tooltiptext tooltiptext-bottom">End game</span>
+      </div>
+
+      <div className='control show-breaks tooltip'>
+        <img src={historyIcon} alt='Show history' />
+        <span class="tooltiptext tooltiptext-bottom">Show history of breaks</span>
+      </div>
+
+      <div className='control undo tooltip'>
+        <img src={undoIcon} alt='Undo' onClick={handleUndo} />
+        <span class="tooltiptext tooltiptext-bottom">Undo</span>
+      </div>
+
+      <div className='control redo tooltip'>
+        <img src={redoIcon} alt='Redo' onClick={handleRedo} />
+        <span class="tooltiptext tooltiptext-bottom">Redo</span>
+      </div>
     </div>
   )
 }

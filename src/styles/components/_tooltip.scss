@@ -1,0 +1,56 @@
+// To create a tooltip, you need to follow the template below
+// in the DOM
+// 
+// <div className='tooltip'>  // The container div
+//   <div className='tooltiptext tooltiptext-[top|bottom|left|right]'> // The tooltip + tooltip position class
+// </div>
+
+.tooltip {
+  position: relative;
+  display: inline-block;  
+
+  .tooltiptext {    
+    background-color: $transparent-black;
+    border-radius: 6px;    
+    color: $off-white;
+    font-size: 0.8rem;
+    padding: 5px 0;
+    opacity: 0;
+    position: absolute;    
+    text-align: center;    
+    z-index: 1;    
+  }
+
+  .tooltiptext-top {
+    width: 90px;
+    left: 50%;
+    bottom: 115%;
+    margin-left: -45px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  }
+
+  .tooltiptext-bottom {
+    width: 90px;
+    top: 115%;
+    left: 50%;
+    margin-left: -45px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  }
+
+  .tooltiptext-left {
+    top: -5px;
+    right: 105%; 
+  }
+
+  .tooltiptext-right {
+    top: -5px;
+    left: 105%; 
+  }
+
+  // When you hover over the tooltip container, the tooltip text gets
+  // opacity 1 with a transition of 1s. However, the tooltip must disappear
+  // immediately after mouse-out, ergo the class combination selector below
+  &:hover .tooltiptext {
+    transition: opacity 200ms ease-in-out 0.8s;
+    opacity: 1;
+  }
+}
+
