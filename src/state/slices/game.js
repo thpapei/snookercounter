@@ -45,18 +45,18 @@ const undoable = (reducer) => {
 }
 
 const initialState = {
-  player1: {
+  '1': {
     name: '',
-    id: 1
+    framesWon: 0
   },
-  player2: {
+  '2': {
     name: '',
-    id: 2
+    framesWon: 0
   },
   activePlayerId: 1,
   totalFrames: 3,
   gameStarted: false,
-  currentFrame: 0,
+  activeFrame: 0,
   numberOfReds: 15,
   currentBreak: [],
   frames: []
@@ -74,8 +74,9 @@ const gameSlice = createSlice({
         frames[currentFrame][playerId].score += 1;
       }
     },
-    setPlayer1Name: (state, action) => { state.player1Name = action.payload },
-    setPlayer2Name: (state, action) => { state.player2Name = action.payload },
+    setPlayer1Name: (state, action) => { state.player1.name = action.payload },
+    setPlayer2Name: (state, action) => { state.player2.name = action.payload },
+    editGame: (state, action) => { state = { state, ...action.payload } },
     addFrame: (state, action) => { state.frames.push(action.payload) }
   }
 });
