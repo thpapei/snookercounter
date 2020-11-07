@@ -6,20 +6,27 @@ import Players from './Players';
 import { useSelector } from 'react-redux';
 import Modal from './Modal';
 import NewGameForm from './NewGameForm';
+import startIcon from '../assets/images/start.png';
 
 
 const App = (props) => {
   const [isStartGameModalOpen, setIsStartGameModalOpen] = useState(false);
 
   const gameStarted = useSelector(state => state.game.present.gameStarted);
-  const numberOfReds = useSelector(state => state.game.present.numberOfReds);
 
   return (
     <div className='app'>
       <Players />
-      <Information currentFrame={3} frames={5} numberOfReds={numberOfReds} difference={5} />
-      <Balls />
-      <Controls setIsModalOpen={setIsStartGameModalOpen} />
+      <Information currentFrame={3} frames={5} difference={5} />
+      {gameStarted ?
+        (
+          <>
+            <Balls />
+            <Controls setIsModalOpen={setIsStartGameModalOpen} />
+          </>
+        )
+        :
+        (<div className='control call-to-action' onClick={() => setIsStartGameModalOpen(true)}><img src={startIcon} /></div>)}
       {isStartGameModalOpen ?
         <Modal setIsModalOpen={setIsStartGameModalOpen}>
           <NewGameForm setIsModalOpen={setIsStartGameModalOpen} />

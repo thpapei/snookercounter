@@ -1,6 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-const Information = ({ currentFrame, frames, numberOfReds, difference }) => {
+const Information = ({ currentFrame, frames, difference }) => {
+  const numberOfReds = useSelector(state => state.game.present.numberOfReds);
+
   const pointsRemaining = numberOfReds + numberOfReds * 7 + 2 + 3 + 4 + 5 + 6 + 7;
 
   return (

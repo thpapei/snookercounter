@@ -38,3 +38,15 @@
     margin: 0;
   }
 }
+
+.call-to-action {
+  animation-name: callToAction;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes callToAction {
+  from {background-color: transparent}
+  to {background-color: $off-white}
+}
