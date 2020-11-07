@@ -8,26 +8,34 @@ import brown from '../assets/images/brown.png';
 import green from '../assets/images/green.png';
 import yellow from '../assets/images/yellow.png';
 import { useConfirmAudio } from '../utilities/sound';
+import { useDispatch } from 'react-redux';
+import { pocketRed, pocketColoredBall } from '../state/slices/game';
 
 const Balls = (props) => {
   const confirmAudio = useConfirmAudio();
+  const dispatch = useDispatch();
 
-  const pocketBall = points => {
+  const handlePocketRed = () => {
     confirmAudio.play();
-    // dispatch points    
+    dispatch(pocketRed());
+  }
+
+  const handlePocketColoredBall = color => {
+    confirmAudio.play();
+    dispatch(pocketColoredBall(color));
   }
 
   return (
     <>
       <div className='controls balls'>
-        <div className='control ball red' onClick={() => pocketBall(1)}><img src={red} alt='Red ball' /></div>
-        <div className='control ball yellow' onClick={() => pocketBall(2)}><img src={yellow} alt='Yellow ball' /></div>
-        <div className='control ball green' onClick={() => pocketBall(3)}><img src={green} alt='Green ball' /></div>
-        <div className='control ball brown' onClick={() => pocketBall(4)}><img src={brown} alt='Brown ball' /></div>
-        <div className='control ball blue' onClick={() => pocketBall(5)}><img src={blue} alt='Blue ball' /></div>
-        <div className='control ball pink' onClick={() => pocketBall(6)}><img src={pink} alt='Pink ball' /></div>
-        <div className='control ball black' onClick={() => pocketBall(7)}><img src={black} alt='Black ball' /></div>
-        <div className='control ball white' onClick={() => pocketBall(7)}><img src={white} alt='White ball' /></div>
+        <div className='control ball red' onClick={handlePocketRed}><img src={red} alt='Red ball' /></div>
+        <div className='control ball yellow' onClick={() => handlePocketColoredBall('yellow')}><img src={yellow} alt='Yellow ball' /></div>
+        <div className='control ball green' onClick={() => handlePocketColoredBall('green')}><img src={green} alt='Green ball' /></div>
+        <div className='control ball brown' onClick={() => handlePocketColoredBall('brown')}><img src={brown} alt='Brown ball' /></div>
+        <div className='control ball blue' onClick={() => handlePocketColoredBall('blue')}><img src={blue} alt='Blue ball' /></div>
+        <div className='control ball pink' onClick={() => handlePocketColoredBall('pink')}><img src={pink} alt='Pink ball' /></div>
+        <div className='control ball black' onClick={() => handlePocketColoredBall('black')}><img src={black} alt='Black ball' /></div>
+        <div className='control ball white' onClick={() => handlePocketColoredBall(7)}><img src={white} alt='White ball' /></div>
       </div>
     </>
   )

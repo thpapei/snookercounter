@@ -62,18 +62,22 @@ const initialState = {
   frames: []
 }
 
+const ballWorth = {
+  'red': 1,
+  'yellow': 2,
+  'green': 3,
+  'brown': 4,
+  'blue': 5,
+  'pink': 6,
+  'black': 7
+}
+
 const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
     setActivePlayerId: (state, action) => { state.activePlayerId = action.payload; },
     setReds: (state, action) => { state.numberOfReds = action.payload },
-    pocketRed: (state, action) => {
-      if (numberOfReds > 0) {
-        state.numberOfReds--;
-        frames[currentFrame][playerId].score += 1;
-      }
-    },
     setPlayerName: (state, action) => { state[`${action.payload.id}`].name = action.payload.name },
     startGame: (state, { payload }) => {
       state['1'].name = payload['1'];
@@ -81,12 +85,30 @@ const gameSlice = createSlice({
       state.numberOfReds = payload.numberOfReds;
       state.totalFrames = payload.totalFrames;
       state.gameStarted = true;
+      state.frames = [];
+      state.frames.push({
+        '1': {
+          score: 0
+        },
+        '2': {
+          score: 0
+        }
+      })
     },
-    addFrame: (state, action) => { state.frames.push(action.payload) }
+    addFrame: (state, action) => { state.frames.push(action.payload) },
+    pocketRed: state => {
+      if (state.numberOfReds > 0) {
+        state.numberOfReds--;
+        state.frames[state.activeFrame][state.activePlayerId].score += 1;
+      }
+    },
+    pocketColoredBall: (state, action) => {
+      state.frames[state.activeFrame][state.activePlayerId].score += ballWorth[action.payload];
+    }
   }
 });
 
-export const { setActivePlayerId, setReds, setPlayerName, startGame, addFrame } = gameSlice.actions;
+export const { setActivePlayerId, setReds, setPlayerName, startGame, addFrame, pocketColoredBall, pocketRed } = gameSlice.actions;
 export const { undo } = { type: 'game/undo' }
 export const { redo } = { type: 'game/redo' }
 export default undoable(gameSlice.reducer);
