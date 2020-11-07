@@ -1,0 +1,12 @@
+.important {
+  color: red;
+  animation: changeColor;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes changeColor {
+  from {color: red}
+  to {color: green}
+}

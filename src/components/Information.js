@@ -32,7 +32,7 @@ const Information = () => {
         <p>Reds: {numberOfReds}</p>
         <p>Points Remaining: {pointsRemaining}</p>
         <p>Difference: {difference}</p>
-        {(difference > pointsRemaining) && <p>Snookers Required Stage</p>}
+        {(difference > pointsRemaining) && <p className='important'>Snookers Required Stage</p>}
       </div>
     </>
   )
