@@ -7,9 +7,13 @@ import blue from '../assets/images/blue.png';
 import brown from '../assets/images/brown.png';
 import green from '../assets/images/green.png';
 import yellow from '../assets/images/yellow.png';
+import { useConfirmAudio } from '../utilities/sound';
 
 const Balls = (props) => {
+  const confirmAudio = useConfirmAudio();
+
   const pocketBall = points => {
+    confirmAudio.play();
     // dispatch points    
   }
 
