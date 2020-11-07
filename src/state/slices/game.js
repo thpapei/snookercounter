@@ -69,7 +69,8 @@ const ballWorth = {
   'brown': 4,
   'blue': 5,
   'pink': 6,
-  'black': 7
+  'black': 7,
+  'white': 4
 }
 
 const gameSlice = createSlice({
@@ -77,7 +78,12 @@ const gameSlice = createSlice({
   initialState,
   reducers: {
     setActivePlayerId: (state, action) => { state.activePlayerId = action.payload; },
-    setReds: (state, action) => { state.numberOfReds = action.payload },
+    setReds: (state, action) => {
+      if (action.payload === 6 || action.payload === 10 || action.payload === 15) {
+        state.numberOfReds = action.payloadl;
+      }
+    },
+    removeRed: (state) => { if (state.numberOfReds > 0) state.numberOfReds-- },
     setPlayerName: (state, action) => { state[`${action.payload.id}`].name = action.payload.name },
     startGame: (state, { payload }) => {
       state['1'].name = payload['1'];
@@ -104,11 +110,26 @@ const gameSlice = createSlice({
     },
     pocketColoredBall: (state, action) => {
       state.frames[state.activeFrame][state.activePlayerId].score += ballWorth[action.payload];
+    },
+    commitFoul: (state, action) => {
+      const otherPlayerId = state.activePlayerId === 1 ? 2 : 1;
+
+      state.frames[state.activeFrame][otherPlayerId].score += ballWorth[action.payload];
     }
   }
 });
 
-export const { setActivePlayerId, setReds, setPlayerName, startGame, addFrame, pocketColoredBall, pocketRed } = gameSlice.actions;
+export const {
+  setActivePlayerId,
+  setReds,
+  setPlayerName,
+  startGame,
+  addFrame,
+  pocketColoredBall,
+  pocketRed,
+  commitFoul,
+  removeRed
+} = gameSlice.actions;
 export const { undo } = { type: 'game/undo' }
 export const { redo } = { type: 'game/redo' }
 export default undoable(gameSlice.reducer);
