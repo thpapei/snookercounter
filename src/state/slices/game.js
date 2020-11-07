@@ -81,7 +81,7 @@ const gameSlice = createSlice({
   }
 });
 
-export const { setActivePlayerId, setReds, setPlayer1Name, setPlayer2Name } = gameSlice.actions;
+export const { setActivePlayerId, setReds, setPlayer1Name, setPlayer2Name, editGame, addFrame } = gameSlice.actions;
 export const { undo } = { type: 'game/undo' }
 export const { redo } = { type: 'game/redo' }
 export default undoable(gameSlice.reducer);
