@@ -1,14 +1,12 @@
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import { string, object } from 'yup';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import confirm from '../assets/images/confirm.png';
 import cancel from '../assets/images/cancel.png';
 
 const NewGameForm = (props) => {
   const dispatch = useDispatch();
-
-
 
   return (
     <Formik
@@ -29,14 +27,14 @@ const NewGameForm = (props) => {
           .oneOf([6, 10, 15])
           .required('Required'),
         totalFrames: string()
-          .oneOf(['3', '5', '11', '21'])
+          .oneOf(['1', '3', '5', '11', '21'])
           .required('Required')
       })}
       onSubmit={(values, actions) => {
-        console.log(values, actions)
+        console.log('hey')
       }}
     >
-      <Form id='new-game-form'>
+      <Form>
         <div className='form-fields'>
           <label htmlFor='player1Name'>Player 1: </label>
           <Field id='player1Name' name='player1Name' placeholder='player 1 name' />
@@ -54,15 +52,16 @@ const NewGameForm = (props) => {
         <div className='form-fields'>
           <label htmlFor='numberOfReds'>Number of reds: </label>
           <Field as='select' id='numberOfReds' name='numberOfReds'>
-            <option value={15}>15</option>
-            <option value={10}>10</option>
             <option value={6}>6</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
           </Field>
         </div>
 
         <div className='form-fields'>
           <label htmlFor='totalFrames'>Total frames: </label>
           <Field as='select' id='totalFrames' name='totalFrames'>
+            <option value={1}>1</option>
             <option value={3}>3</option>
             <option value={5}>5</option>
             <option value={7}>7</option>
@@ -75,8 +74,9 @@ const NewGameForm = (props) => {
             <option value={21}>21</option>
           </Field>
         </div>
+
         <div className='confirm-buttons form-fields' >
-          <button className='control confirm' form='new-game-form' type='submit'><img src={confirm} /></button>
+          <button className='control confirm' type='submit'><img src={confirm} /></button>
           <button className='control cancel'><img src={cancel} onClick={() => props.setIsModalOpen(false)} /></button>
         </div>
       </Form>
