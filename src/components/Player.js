@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActivePlayerId } from '../state/slices/game';
 
-const Player = ({ activePlayerId, id }) => {
+const Player = ({ id }) => {
   const dispatch = useDispatch();
   const name = useSelector(state => state.game.present[`${id}`].name);
   const score = useSelector(state => {
@@ -13,7 +13,7 @@ const Player = ({ activePlayerId, id }) => {
     }
   });
   const framesWon = useSelector(state => state.game.present[`${id}`].framesWon);
-
+  const activePlayerId = useSelector(state => state.game.present.activePlayerId);
   const [username, setUsername] = useState(name);
 
   const handleNameChange = e => {
