@@ -54,7 +54,7 @@ const initialState = {
     framesWon: 0
   },
   activePlayerId: 1,
-  totalFrames: 3,
+  totalFrames: 1,
   gameStarted: false,
   activeFrame: 0,
   numberOfReds: 15,
