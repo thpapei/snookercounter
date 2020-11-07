@@ -14,8 +14,8 @@ const NewGameForm = (props) => {
   return (
     <Formik
       initialValues={{
-        player1Name: 'tom',
-        player2Name: 'geo',
+        player1Name: '',
+        player2Name: '',
         numberOfReds: 15,
         totalFrames: 1
       }}
