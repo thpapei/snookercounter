@@ -4,17 +4,20 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import confirm from '../assets/images/confirm.png';
 import cancel from '../assets/images/cancel.png';
+import { startGame } from '../state/slices/game';
+import { useStartGameAudio } from '../utilities/sound';
 
 const NewGameForm = (props) => {
   const dispatch = useDispatch();
+  const startGameAudio = useStartGameAudio();
 
   return (
     <Formik
       initialValues={{
-        player1Name: '',
-        player2Name: '',
+        player1Name: 'tom',
+        player2Name: 'geo',
         numberOfReds: 15,
-        totalFrames: 3
+        totalFrames: 1
       }}
       validationSchema={object({
         player1Name: string()
@@ -22,16 +25,18 @@ const NewGameForm = (props) => {
           .required('Required'),
         player2Name: string()
           .max(20, 'Must be 20 characters or less')
-          .required('Required'),
-        numberOfReds: string()
-          .oneOf([6, 10, 15])
-          .required('Required'),
-        totalFrames: string()
-          .oneOf(['1', '3', '5', '11', '21'])
           .required('Required')
       })}
-      onSubmit={(values, actions) => {
-        console.log('hey')
+      onSubmit={({ player1Name, player2Name, numberOfReds, totalFrames }, actions) => {
+        dispatch(startGame({
+          ['1']: player1Name,
+          ['2']: player2Name,
+          numberOfReds: parseInt(numberOfReds),
+          totalFrames: parseInt(totalFrames),
+          gameStarted: true
+        }));
+        props.setIsModalOpen(false);
+        startGameAudio.play();
       }}
     >
       <Form>
@@ -77,7 +82,7 @@ const NewGameForm = (props) => {
 
         <div className='confirm-buttons form-fields' >
           <button className='control confirm' type='submit'><img src={confirm} /></button>
-          <button className='control cancel' onClick={() => props.setIsModalOpen(false)} > <img src={cancel} /></button>
+          <button className='control cancel' onClick={() => props.setIsModalOpen(false)}> <img src={cancel} /></button>
         </div>
       </Form>
     </Formik >

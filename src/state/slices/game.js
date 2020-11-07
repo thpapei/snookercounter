@@ -74,14 +74,19 @@ const gameSlice = createSlice({
         frames[currentFrame][playerId].score += 1;
       }
     },
-    setPlayer1Name: (state, action) => { state.player1.name = action.payload },
-    setPlayer2Name: (state, action) => { state.player2.name = action.payload },
-    editGame: (state, action) => { state = { state, ...action.payload } },
+    setPlayerName: (state, action) => { state.[`${action.payload.id}`].name = action.payload.name },
+    startGame: (state, { payload }) => {
+      state['1'].name = payload['1'];
+      state['2'].name = payload['2'];
+      state.numberOfReds = payload.numberOfReds;
+      state.totalFrames = payload.totalFrames;
+      state.gameStarted = true;
+    },
     addFrame: (state, action) => { state.frames.push(action.payload) }
   }
 });
 
-export const { setActivePlayerId, setReds, setPlayer1Name, setPlayer2Name, editGame, addFrame } = gameSlice.actions;
+export const { setActivePlayerId, setReds, setPlayerName, startGame, addFrame } = gameSlice.actions;
 export const { undo } = { type: 'game/undo' }
 export const { redo } = { type: 'game/redo' }
 export default undoable(gameSlice.reducer);
