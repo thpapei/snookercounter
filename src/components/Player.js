@@ -5,13 +5,7 @@ import { setActivePlayerId, setPlayerName } from '../state/slices/game';
 const Player = ({ id }) => {
   const dispatch = useDispatch();
   const name = useSelector(state => state.game.present[`${id}`].name);
-  const score = useSelector(state => {
-    if (state.game.present.frames.length > 0) {
-      return state.game.present.frames[state.game.present.activeFrame][`${id}`].score
-    } else {
-      return 0;
-    }
-  });
+  const score = useSelector(state => state.game.present[`${id}`].score);
   const framesWon = useSelector(state => state.game.present[`${id}`].framesWon);
   const activePlayerId = useSelector(state => state.game.present.activePlayerId);
 

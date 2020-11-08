@@ -47,19 +47,21 @@ const undoable = (reducer) => {
 const initialState = {
   '1': {
     name: '',
-    framesWon: 0
+    framesWon: 0,
+    score: 0
   },
   '2': {
     name: '',
-    framesWon: 0
+    framesWon: 0,
+    score: 0
   },
   activePlayerId: 1,
   totalFrames: 1,
   gameStarted: false,
   activeFrame: 0,
   numberOfReds: 15,
+  pointsRemaining: 15 + 15 * 7 + 2 + 3 + 4 + 5 + 6 + 7,
   currentBreak: [],
-  frames: []
 }
 
 const ballWorth = {
@@ -83,7 +85,12 @@ const gameSlice = createSlice({
         state.numberOfReds = action.payloadl;
       }
     },
-    removeRed: (state) => { if (state.numberOfReds > 0) state.numberOfReds-- },
+    removeRed: (state) => {
+      if (state.numberOfReds > 0) {
+        state.numberOfReds--
+      };
+      state.pointsRemaining = state.pointsRemaining - 1;
+    },
     setPlayerName: (state, action) => { state[`${action.payload.id}`].name = action.payload.name },
     startGame: (state, { payload }) => {
       state['1'].name = payload['1'];
@@ -91,30 +98,21 @@ const gameSlice = createSlice({
       state.numberOfReds = payload.numberOfReds;
       state.totalFrames = payload.totalFrames;
       state.gameStarted = true;
-      state.frames = [];
-      state.frames.push({
-        '1': {
-          score: 0
-        },
-        '2': {
-          score: 0
-        }
-      })
     },
-    addFrame: (state, action) => { state.frames.push(action.payload) },
     pocketRed: state => {
       if (state.numberOfReds > 0) {
         state.numberOfReds--;
-        state.frames[state.activeFrame][state.activePlayerId].score += 1;
+        state[state.activePlayerId].score += 1;
+        state.pointsRemaining--;
       }
     },
     pocketColoredBall: (state, action) => {
-      state.frames[state.activeFrame][state.activePlayerId].score += ballWorth[action.payload];
+      state[state.activePlayerId].score += ballWorth[action.payload];
     },
     commitFoul: (state, action) => {
       const otherPlayerId = state.activePlayerId === 1 ? 2 : 1;
 
-      state.frames[state.activeFrame][otherPlayerId].score += ballWorth[action.payload];
+      state[otherPlayerId].score += ballWorth[action.payload];
     }
   }
 });
@@ -124,7 +122,6 @@ export const {
   setReds,
   setPlayerName,
   startGame,
-  addFrame,
   pocketColoredBall,
   pocketRed,
   commitFoul,
