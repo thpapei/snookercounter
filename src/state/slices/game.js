@@ -105,7 +105,7 @@ const gameSlice = createSlice({
       if (state.numberOfReds > 0) {
         state.numberOfReds--;
         state[state.activePlayerId].score += 1;
-        state.pointsRemaining -= 1;
+        state.pointsRemaining -= 8;
         state.isColorStage = true;
       }
     },
