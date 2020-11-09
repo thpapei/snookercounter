@@ -23,8 +23,8 @@ const Player = ({ id }) => {
 
   return (
     <div className='player_container'>
-      <div className={`player_score player_score${id}`} style={activePlayerId === id ? style : null} onClick={handleActivePlayer} ><p>{score}</p></div>
-      <input value={name} onChange={handleNameChange} placeholder={`Player ${id}`} />
+      <div className={`player_score player${id}`} style={activePlayerId === id ? style : null} onClick={handleActivePlayer} ><p>{score}</p></div>
+      <input className={`player${id}`} value={name} onChange={handleNameChange} placeholder={`Player ${id}`} />
       <div className='player_frames_won'>Frames Won: {framesWon}</div>
     </div>);
 };
