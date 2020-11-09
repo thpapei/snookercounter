@@ -1,0 +1,10 @@
+input {
+  background-color: transparent;
+
+  transition: background-color 200ms ease-in-out;
+
+  &:hover,
+  &:active {
+    background-color: $hover-color;
+  }
+}
