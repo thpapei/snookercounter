@@ -5,14 +5,18 @@
   flex-wrap: wrap;
 }
 
-.controls-spaced-evenly{
+.controls-spaced-evenly {
   display: flex;
   justify-content: space-evenly;
   margin: $xxs-size;
   flex-wrap: wrap;
 }
-.control {    
 
+.no-wrap {
+  flex-wrap: none;
+  margin: 0;
+}
+.control {
   align-items: center;  
   background-color: transparent;
   border: 2px  $off-white solid;  
@@ -30,6 +34,11 @@
   -moz-user-select: none; /* for mozilla browsers */
   -khtml-user-select: none; /* for konqueror browsers */
   -ms-user-select: none; /* for IE10+ */
+
+  @media (max-width: $desktop-breakpoint){
+    max-width: 30px;
+    max-height: 30px;
+  }
 
   &:hover,
   &:active {      

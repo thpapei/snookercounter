@@ -12,4 +12,8 @@
 .black-label {
   color: $dark-grey;
   font-size: 0.8rem;
+
+  @media (max-width: $desktop-breakpoint){
+    font-size: 0.6rem;
+  }
 }
