@@ -62,7 +62,7 @@ const Controls = () => {
       </div>
       {
         isEndGameModalOpen ?
-          <Modal>
+          <Modal setIsModalOpen={setIsEndGameModalOpen}>
             <h3>Are you sure you want to end this game?</h3>
             <div className='controls'>
               <button className='control confirm' onClick={() => {
@@ -77,7 +77,7 @@ const Controls = () => {
       }
       {
         isRestartFrameModalOpen ?
-          <Modal>
+          <Modal setIsModalOpen={setIsRestartFrameModalOpen}>
             <h3>Are you sure you want to restart this frame?</h3>
             <div className='controls'>
               <button className='control confirm' onClick={() => {
