@@ -79,6 +79,14 @@ const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
+    startGame: (state, { payload: { 1: player1Name, 2: player2Name, numberOfReds, totalFrames } }) => {
+      state['1'].name = player1Name;
+      state['2'].name = player2Name;
+      state.numberOfReds = numberOfReds;
+      state.totalFrames = totalFrames;
+      state.pointsRemaining = numberOfReds * 8 + 27;
+      state.gameStarted = true;
+    },
     setActivePlayerId: (state, action) => { state.activePlayerId = action.payload; },
     setReds: (state, action) => {
       if (action.payload === 6 || action.payload === 10 || action.payload === 15) {
@@ -92,13 +100,6 @@ const gameSlice = createSlice({
       state.pointsRemaining = state.pointsRemaining - 1;
     },
     setPlayerName: (state, action) => { state[`${action.payload.id}`].name = action.payload.name },
-    startGame: (state, { payload }) => {
-      state['1'].name = payload['1'];
-      state['2'].name = payload['2'];
-      state.numberOfReds = payload.numberOfReds;
-      state.totalFrames = payload.totalFrames;
-      state.gameStarted = true;
-    },
     pocketRed: state => {
       if (state.numberOfReds > 0) {
         state.numberOfReds--;
@@ -113,7 +114,7 @@ const gameSlice = createSlice({
       const otherPlayerId = state.activePlayerId === 1 ? 2 : 1;
 
       state[otherPlayerId].score += ballWorth[action.payload];
-    }
+    },
   }
 });
 
@@ -125,7 +126,8 @@ export const {
   pocketColoredBall,
   pocketRed,
   commitFoul,
-  removeRed
+  removeRed,
+  resetGame
 } = gameSlice.actions;
 export const { undo } = { type: 'game/undo' }
 export const { redo } = { type: 'game/redo' }
