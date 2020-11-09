@@ -1,10 +1,18 @@
 .controls {  
   display: flex;  
-  justify-content: center;
-  min-width: 450px;
-
+  justify-content: center;    
+  margin: $xxs-size;
+  flex-wrap: wrap;
 }
-.control {        
+
+.controls-spaced-evenly{
+  display: flex;
+  justify-content: space-evenly;
+  margin: $xxs-size;
+  flex-wrap: wrap;
+}
+.control {    
+
   align-items: center;  
   background-color: transparent;
   border: 2px  $off-white solid;  

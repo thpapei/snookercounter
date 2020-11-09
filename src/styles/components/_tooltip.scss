@@ -2,7 +2,7 @@
 // in the DOM
 // 
 // <div className='tooltip'>  // The container div
-//   <div className='tooltiptext tooltiptext-[top|bottom|left|right]'> // The tooltip + tooltip position class
+//   <span className="tooltiptext tooltiptext-bottom">Undo</span> // The tooltip + tooltip position class
 // </div>
 
 .tooltip {
