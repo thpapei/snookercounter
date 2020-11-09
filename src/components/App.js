@@ -7,8 +7,6 @@ import { useSelector } from 'react-redux';
 import Modal from './Modal';
 import NewGameForm from './NewGameForm';
 import startIcon from '../assets/images/start.png';
-import FoulPanel from './FoulPanel';
-
 
 const App = (props) => {
   const [isStartGameModalOpen, setIsStartGameModalOpen] = useState(false);
@@ -37,15 +35,6 @@ const App = (props) => {
           :
           null
       }
-      {
-        isFoulPanelModalOpen ?
-          <Modal setIsModalOpen={setIsFoulPanelModalOpen}>
-            <FoulPanel setIsModalOpen={setIsFoulPanelModalOpen} />
-          </Modal>
-          :
-          null
-      }
-
     </>)
 }
 

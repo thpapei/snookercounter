@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import red from '../assets/images/red.png';
-import white from '../assets/images/white.png';
 import black from '../assets/images/black.png';
 import pink from '../assets/images/pink.png';
 import blue from '../assets/images/blue.png';
@@ -29,19 +28,33 @@ const Balls = ({ setIsModalOpen }) => {
     <>
       <div className='balls-container'>
         <div className='controls-spaced-evenly balls'>
-          <div className='control ball red' onClick={handlePocketRed}><img src={red} alt='Red ball' /></div>
-          <div className='control ball white' onClick={() => setIsModalOpen(true)}>
-            <img src={white} alt='White ball' />
-            <p className='foul-ball-label black-label'>Foul</p>
+          <div className='control ball red' onClick={handlePocketRed}>
+            <img src={red} alt='Red ball' />
           </div>
         </div>
         <div className='controls balls'>
-          <div className='control ball yellow' onClick={() => handlePocketColoredBall('yellow')}><img src={yellow} alt='Yellow ball' /></div>
-          <div className='control ball green' onClick={() => handlePocketColoredBall('green')}><img src={green} alt='Green ball' /></div>
-          <div className='control ball brown' onClick={() => handlePocketColoredBall('brown')}><img src={brown} alt='Brown ball' /></div>
-          <div className='control ball blue' onClick={() => handlePocketColoredBall('blue')}><img src={blue} alt='Blue ball' /></div>
-          <div className='control ball pink' onClick={() => handlePocketColoredBall('pink')}><img src={pink} alt='Pink ball' /></div>
-          <div className='control ball black' onClick={() => handlePocketColoredBall('black')}><img src={black} alt='Black ball' /></div>
+          <div className='controls no-wrap'>
+            <div className='control ball yellow' onClick={() => handlePocketColoredBall('yellow')}>
+              <img src={yellow} alt='Yellow ball' />
+            </div>
+            <div className='control ball green' onClick={() => handlePocketColoredBall('green')}>
+              <img src={green} alt='Green ball' />
+            </div>
+            <div className='control ball brown' onClick={() => handlePocketColoredBall('brown')}>
+              <img src={brown} alt='Brown ball' />
+            </div>
+          </div>
+          <div className='controls no-wrap'>
+            <div className='control ball blue' onClick={() => handlePocketColoredBall('blue')}>
+              <img src={blue} alt='Blue ball' />
+            </div>
+            <div className='control ball pink' onClick={() => handlePocketColoredBall('pink')}>
+              <img src={pink} alt='Pink ball' />
+            </div>
+            <div className='control ball black' onClick={() => handlePocketColoredBall('black')}>
+              <img src={black} alt='Black ball' />
+            </div>
+          </div>
         </div>
       </div>
     </>
