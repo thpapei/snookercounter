@@ -115,6 +115,7 @@ const gameSlice = createSlice({
 
       state[otherPlayerId].score += ballWorth[action.payload];
     },
+    resetGame: (state) => state = initialState,
   }
 });
 
