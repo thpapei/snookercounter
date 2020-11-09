@@ -58,6 +58,7 @@ const initialState = {
   activePlayerId: 1,
   totalFrames: 1,
   gameStarted: false,
+  isColorStage: false,
   activeFrame: 0,
   numberOfReds: 15,
   pointsRemaining: 15 + 15 * 7 + 2 + 3 + 4 + 5 + 6 + 7,
@@ -88,40 +89,51 @@ const gameSlice = createSlice({
       state.gameStarted = true;
     },
     setActivePlayerId: (state, action) => { state.activePlayerId = action.payload; },
-    setReds: (state, action) => {
-      if (action.payload === 6 || action.payload === 10 || action.payload === 15) {
-        state.numberOfReds = action.payloadl;
-      }
-    },
     removeRed: (state) => {
       if (state.numberOfReds > 0) {
         state.numberOfReds--
+        state.pointsRemaining -= 8;
       };
-      state.pointsRemaining = state.pointsRemaining - 1;
     },
     setPlayerName: (state, action) => { state[`${action.payload.id}`].name = action.payload.name },
     pocketRed: state => {
       if (state.numberOfReds > 0) {
         state.numberOfReds--;
         state[state.activePlayerId].score += 1;
-        state.pointsRemaining--;
+        state.pointsRemaining -= 1;
+        state.isColorStage = true;
       }
     },
     pocketColoredBall: (state, action) => {
       state[state.activePlayerId].score += ballWorth[action.payload];
+      if (!state.isColorStage) {
+        state.pointsRemaining -= ballWorth[action.payload];
+      }
+      state.isColorStage = false;
     },
     commitFoul: (state, action) => {
       const otherPlayerId = state.activePlayerId === 1 ? 2 : 1;
 
       state[otherPlayerId].score += ballWorth[action.payload];
     },
-    resetGame: (state) => state = initialState,
+    resetGame: state => state = initialState,
+    resetFrame: state => {
+      const player1FramesWon = state['1'].framesWon;
+      const player2FramesWon = state['2'].framesWon;
+      const activeFrame = state.activeFrame;
+      const totalFrames = state.totalFrames;
+
+      state = initialState;
+      state['1'] = player1FramesWon;
+      state['2'] = player2FramesWon;
+      state.activeFrame = activeFrame;
+      state.totalFrames = totalFrames;
+    },
   }
 });
 
 export const {
   setActivePlayerId,
-  setReds,
   setPlayerName,
   startGame,
   pocketColoredBall,
