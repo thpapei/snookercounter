@@ -7,7 +7,7 @@ import historyIcon from '../assets/images/history.png';
 import { useDispatch, useSelector } from 'react-redux';
 import confirm from '../assets/images/confirm.png';
 import cancel from '../assets/images/cancel.png';
-import { resetGame } from '../state/slices/game';
+import { resetGame, restartFrame } from '../state/slices/game';
 import Modal from './Modal';
 
 const Controls = () => {
@@ -17,6 +17,7 @@ const Controls = () => {
   const futureLength = useSelector(state => state.game.future.length);
 
   const [isEndGameModalOpen, setIsEndGameModalOpen] = useState(false);
+  const [isRestartFrameModalOpen, setIsRestartFrameModalOpen] = useState(false);
 
   const handleUndo = () => {
     if (pastLength > 0) {
@@ -35,7 +36,7 @@ const Controls = () => {
     <>
       <div className='controls'>
         <div className='control restart-frame tooltip' >
-          <img src={restartIcon} alt='Restart Frame' />
+          <img src={restartIcon} alt='Restart Frame' onClick={() => setIsRestartFrameModalOpen(true)} />
           <span className="tooltiptext tooltiptext-bottom">Restart frame</span>
         </div>
 
@@ -59,19 +60,36 @@ const Controls = () => {
           <span className="tooltiptext tooltiptext-bottom">Redo</span>
         </div>
       </div>
-      {isEndGameModalOpen ?
-        <Modal>
-          <h3>Are you sure you want to end this game?</h3>
-          <div className='controls'>
-            <button className='control confirm' onClick={() => {
-              setIsEndGameModalOpen(false);
-              dispatch(resetGame());
-            }}><img src={confirm} /></button>
-            <button className='control cancel' onClick={() => setIsEndGameModalOpen(false)}> <img src={cancel} /></button>
-          </div>
-        </Modal>
-        :
-        null}
+      {
+        isEndGameModalOpen ?
+          <Modal>
+            <h3>Are you sure you want to end this game?</h3>
+            <div className='controls'>
+              <button className='control confirm' onClick={() => {
+                setIsEndGameModalOpen(false);
+                dispatch(resetGame());
+              }}><img src={confirm} /></button>
+              <button className='control cancel' onClick={() => setIsEndGameModalOpen(false)}> <img src={cancel} /></button>
+            </div>
+          </Modal>
+          :
+          null
+      }
+      {
+        isRestartFrameModalOpen ?
+          <Modal>
+            <h3>Are you sure you want to restart this frame?</h3>
+            <div className='controls'>
+              <button className='control confirm' onClick={() => {
+                setIsRestartFrameModalOpen(false);
+                dispatch(restartFrame());
+              }}><img src={confirm} /></button>
+              <button className='control cancel' onClick={() => setIsRestartFrameModalOpen(false)}> <img src={cancel} /></button>
+            </div>
+          </Modal>
+          :
+          null
+      }
     </>
   )
 }

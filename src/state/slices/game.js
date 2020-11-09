@@ -63,6 +63,7 @@ const initialState = {
   numberOfReds: 15,
   pointsRemaining: 15 + 15 * 7 + 2 + 3 + 4 + 5 + 6 + 7,
   currentBreak: [],
+  initialFrameState: {}
 }
 
 const ballWorth = {
@@ -87,6 +88,10 @@ const gameSlice = createSlice({
       state.totalFrames = totalFrames;
       state.pointsRemaining = numberOfReds * 8 + 27;
       state.gameStarted = true;
+
+      state.initialFrameState.numberOfReds = numberOfReds;
+      state.initialFrameState.totalFrames = totalFrames;
+      state.initialFrameState.pointsRemaining = numberOfReds * 8 + 27;
     },
     setActivePlayerId: (state, action) => { state.activePlayerId = action.payload; },
     removeRed: (state) => {
@@ -117,17 +122,13 @@ const gameSlice = createSlice({
       state[otherPlayerId].score += ballWorth[action.payload];
     },
     resetGame: state => state = initialState,
-    resetFrame: state => {
-      const player1FramesWon = state['1'].framesWon;
-      const player2FramesWon = state['2'].framesWon;
-      const activeFrame = state.activeFrame;
-      const totalFrames = state.totalFrames;
-
-      state = initialState;
-      state['1'] = player1FramesWon;
-      state['2'] = player2FramesWon;
-      state.activeFrame = activeFrame;
-      state.totalFrames = totalFrames;
+    restartFrame: state => {
+      state['1'].score = 0;
+      state['2'].score = 0;
+      state.pointsRemaining = state.initialFrameState.pointsRemaining;
+      state.numberOfReds = state.initialFrameState.numberOfReds;
+      state.isColorStage = false;
+      state.currentBreak = [];
     },
   }
 });
@@ -140,7 +141,8 @@ export const {
   pocketRed,
   commitFoul,
   removeRed,
-  resetGame
+  resetGame,
+  restartFrame,
 } = gameSlice.actions;
 export const { undo } = { type: 'game/undo' }
 export const { redo } = { type: 'game/redo' }
