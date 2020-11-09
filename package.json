@@ -2,11 +2,13 @@
   "name": "snookercounter",
   "version": "1.0.0",
   "description": "Keep track of your snooker game's score!",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "test",
-    "start": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.js"
+    "dev": "parcel ./src/index.html",
+    "start": "node server/server.js",
+    "build": "parcel build ./src/index.js",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   "homepage": "https://github.com/thpapei/snookercounter#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
+    "express": "^4.17.1",
     "formik": "^2.2.1",
     "react": "^16.8.3 || ^17",
     "react-dom": "^17.0.1",
