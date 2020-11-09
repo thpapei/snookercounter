@@ -59,7 +59,7 @@ const initialState = {
   totalFrames: 1,
   gameStarted: false,
   isColorStage: false,
-  activeFrame: 0,
+  currentFrame: 1,
   numberOfReds: 15,
   pointsRemaining: 15 + 15 * 7 + 2 + 3 + 4 + 5 + 6 + 7,
   currentBreak: [],
@@ -130,6 +130,18 @@ const gameSlice = createSlice({
       state.isColorStage = false;
       state.currentBreak = [];
     },
+    nextFrame: state => {
+      state['1'].score > state['2'].score ? state['1'].framesWon++ : state['2'].framesWon++;
+      state['1'].score = 0;
+      state['2'].score = 0;
+      state.pointsRemaining = state.initialFrameState.pointsRemaining;
+      state.numberOfReds = state.initialFrameState.numberOfReds;
+      state.isColorStage = false;
+      state.currentBreak = [];
+
+      state.currentFrame++;
+
+    }
   }
 });
 
@@ -143,6 +155,7 @@ export const {
   removeRed,
   resetGame,
   restartFrame,
+  nextFrame
 } = gameSlice.actions;
 export const { undo } = { type: 'game/undo' }
 export const { redo } = { type: 'game/redo' }
