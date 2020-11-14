@@ -10,7 +10,6 @@ import startIcon from '../assets/images/start.png';
 
 const App = (props) => {
   const [isStartGameModalOpen, setIsStartGameModalOpen] = useState(false);
-  const [isFoulPanelModalOpen, setIsFoulPanelModalOpen] = useState(false);
 
   const gameStarted = useSelector(state => state.game.present.gameStarted);
 
@@ -21,7 +20,7 @@ const App = (props) => {
       {gameStarted ?
         (
           <>
-            <Balls setIsModalOpen={setIsFoulPanelModalOpen} />
+            <Balls />
             <Controls />
           </>
         )

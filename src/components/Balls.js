@@ -10,7 +10,7 @@ import { useConfirmAudio } from '../utilities/sound';
 import { useDispatch } from 'react-redux';
 import { pocketRed, pocketColoredBall } from '../state/slices/game';
 
-const Balls = ({ setIsModalOpen }) => {
+const Balls = () => {
   const confirmAudio = useConfirmAudio();
   const dispatch = useDispatch();
 
