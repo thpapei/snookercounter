@@ -11,6 +11,8 @@
   overflow: scroll;
   width: 100%;
   max-width: 600px; 
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 
   .ball {    
     height: 20px;
@@ -26,4 +28,8 @@
     margin-bottom: 0.2rem;
     color: $grey;
   }
+}
+
+.break-container::-webkit-scrollbar {
+  display: none;
 }
