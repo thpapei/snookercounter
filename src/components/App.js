@@ -3,6 +3,7 @@ import Balls from './Balls';
 import Controls from './Controls';
 import Information from './Information';
 import Players from './Players';
+import Break from './Break';
 import { useSelector } from 'react-redux';
 import Modal from './Modal';
 import NewGameForm from './NewGameForm';
@@ -12,6 +13,7 @@ const App = (props) => {
   const [isStartGameModalOpen, setIsStartGameModalOpen] = useState(false);
 
   const gameStarted = useSelector(state => state.game.present.gameStarted);
+  const currentBreak = useSelector(state => state.game.present.currentBreak);
 
   return (
     <>
@@ -20,6 +22,7 @@ const App = (props) => {
       {gameStarted ?
         (
           <>
+            <Break currentBreak={currentBreak} />
             <Balls />
             <Controls />
           </>

@@ -93,7 +93,10 @@ const gameSlice = createSlice({
       state.initialFrameState.totalFrames = totalFrames;
       state.initialFrameState.pointsRemaining = numberOfReds * 8 + 27;
     },
-    setActivePlayerId: (state, action) => { state.activePlayerId = action.payload; },
+    setActivePlayerId: (state, action) => {
+      state.activePlayerId = action.payload;
+      state.currentBreak = [];
+    },
     removeRed: (state) => {
       if (state.numberOfReds > 0) {
         state.numberOfReds--
@@ -107,6 +110,7 @@ const gameSlice = createSlice({
         state[state.activePlayerId].score += 1;
         state.pointsRemaining -= 8;
         state.isColorStage = true;
+        state.currentBreak.push('red');
       }
     },
     pocketColoredBall: (state, action) => {
@@ -115,6 +119,7 @@ const gameSlice = createSlice({
         state.pointsRemaining -= ballWorth[action.payload];
       }
       state.isColorStage = false;
+      state.currentBreak.push(action.payload)
     },
     commitFoul: (state, action) => {
       const otherPlayerId = state.activePlayerId === 1 ? 2 : 1;
