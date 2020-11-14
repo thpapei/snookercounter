@@ -17,13 +17,9 @@ const Player = ({ id }) => {
     dispatch(setActivePlayerId(id));
   }
 
-  const style = {
-    borderColor: "white",
-  }
-
   return (
     <div className='player_container'>
-      <div className={`player_score player${id}`} style={activePlayerId === id ? style : null} onClick={handleActivePlayer} ><p>{score}</p></div>
+      <div className={`player_score player${id} ${activePlayerId === id ? 'active' : null}`} onClick={handleActivePlayer} ><p>{score}</p></div>
       <input className={`player${id}`} value={name} onChange={handleNameChange} placeholder={`Player ${id}`} />
       <div className='player_frames_won'>Frames Won: {framesWon}</div>
     </div>);

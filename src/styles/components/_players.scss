@@ -13,8 +13,7 @@
     }
   }
 
-  .player_container {    
-    
+  .player_container {        
   
     .selected {
       border: 3px solid $off-white;
@@ -29,7 +28,7 @@
   
       &:hover,
       &:active {
-      border-color: $off-white;
+      border-color: $off-white-darker;
       }
       
       p {      
@@ -38,7 +37,11 @@
         text-align: center;      
       }
     }
-  
+    
+    .active {
+      animation: flash 800ms ease-in-out infinite alternate;
+    }
+
     .player1 {
       margin-right: $xs-size;
     }
@@ -52,4 +55,9 @@
       cursor: default;
     }
   }
+}
+
+@keyframes flash {
+  from {border-color: $grey}
+  to {border-color: white}
 }
