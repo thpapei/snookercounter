@@ -14,8 +14,8 @@ const NewGameForm = ({ setIsModalOpen }) => {
   return (
     <Formik
       initialValues={{
-        player1Name: '',
-        player2Name: '',
+        player1Name: 'player 1',
+        player2Name: 'player 2',
         numberOfReds: 15,
         totalFrames: 1
       }}
@@ -41,14 +41,14 @@ const NewGameForm = ({ setIsModalOpen }) => {
     >
       <Form>
         <div className='form-fields'>
-          <label htmlFor='player1Name'>Player 1: </label>
+          <label htmlFor='player1Name'>Player 1 Name: </label>
           <Field id='player1Name' name='player1Name' placeholder='player 1 name' />
         </div>
         <ErrorMessage name='player1Name' render={message => <div className='error-message'>{message}</div>} />
 
 
         <div className='form-fields'>
-          <label htmlFor='player2Name'>Player 2: </label>
+          <label htmlFor='player2Name'>Player 2 Name: </label>
           <Field id='player2Name' name='player2Name' placeholder='player 2 name' />
         </div>
         <ErrorMessage name='player2Name' render={message => <div className='error-message'>{message}</div>} />
