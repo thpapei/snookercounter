@@ -61,6 +61,7 @@ const initialState = {
   isColorStage: false,
   wasRedStage: false,
   isFinalStage: false,
+  isFreeBallStage: false,
   currentFrame: 1,
   numberOfReds: 15,
   pointsRemaining: 15 + 15 * 7 + 2 + 3 + 4 + 5 + 6 + 7,
@@ -136,18 +137,29 @@ const gameSlice = createSlice({
       }
 
     },
+    freeBall: (state, action) => {
+      state[state.activePlayerId].score += 1;
+      state.isColorStage = true;
+      state.wasRedStage = true;
+      state.currentBreak.push('red');
+    },
     pocketColoredBall: (state, action) => {
-      state[state.activePlayerId].score += ballWorth[action.payload];
-      // Decrement points only if game is in final stage (special care to not be in color stage of last red ball)
-      if (!state.isColorStage || !state.wasRedStage) {
-        state.pointsRemaining -= ballWorth[action.payload];
-      }
+      if (!state.isFreeBallStage) {
+        state[state.activePlayerId].score += ballWorth[action.payload];
+        // Decrement points only if game is in final stage (special care to not be in color stage of last red ball)
+        if (!state.isColorStage || !state.wasRedStage) {
+          state.pointsRemaining -= ballWorth[action.payload];
+        }
 
-      if (state.pointsRemaining > 27) {
-        state.isColorStage = false;
+        if (state.pointsRemaining > 27) {
+          state.isColorStage = false;
+        }
+        state.wasRedStage = false;
+        state.currentBreak.push(action.payload);
+      } else {
+        state.isFreeBallStage = false;
+        state[state.activePlayerId].score += ballWorth[action.payload];
       }
-      state.wasRedStage = false;
-      state.currentBreak.push(action.payload);
     },
     commitFoul: (state, action) => {
       const otherPlayerId = state.activePlayerId === 1 ? 2 : 1;
@@ -185,6 +197,7 @@ export const {
   setPlayerName,
   startGame,
   pocketColoredBall,
+  freeBall,
   pocketRed,
   commitFoul,
   removeRed,
