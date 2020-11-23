@@ -22,7 +22,7 @@ const Controls = () => {
   const [isEndGameModalOpen, setIsEndGameModalOpen] = useState(false);
   const [isRestartFrameModalOpen, setIsRestartFrameModalOpen] = useState(false);
   const [isFoulPanelModalOpen, setIsFoulPanelModalOpen] = useState(false);
-  const [isOptionsModalOpen, setIsOptionsModalOpen] = useState(true);
+  const [isOptionsModalOpen, setIsOptionsModalOpen] = useState(false);
 
   const handleUndo = () => {
     if (pastLength > 0) {

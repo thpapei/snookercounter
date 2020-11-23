@@ -1,4 +1,12 @@
 .balls-container {
   display: flex;
   flex-direction: column;
+
+  button {
+    transition: opacity 200ms ease-in-out;
+  }
+  button:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
 }

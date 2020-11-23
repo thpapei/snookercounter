@@ -7,7 +7,7 @@ import brown from '../assets/images/brown.png';
 import green from '../assets/images/green.png';
 import yellow from '../assets/images/yellow.png';
 import { useConfirmAudio } from '../utilities/sound';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { pocketRed, pocketColoredBall } from '../state/slices/game';
 
 const Balls = () => {
@@ -24,36 +24,45 @@ const Balls = () => {
     dispatch(pocketColoredBall(color));
   }
 
+  const isColorStage = useSelector(state => state.game.present.isColorStage);
+  const isFinalStage = useSelector(state => state.game.present.isFinalStage);
+  const wasRedStage = useSelector(state => state.game.present.wasRedStage);
+  const pointsRemaining = useSelector(state => state.game.present.pointsRemaining);
+
+  const disableButton = pointsWhereButtonIsEnabled => {
+    return (!isColorStage || (!wasRedStage && isFinalStage && pointsRemaining !== pointsWhereButtonIsEnabled))
+  }
+
   return (
     <>
       <div className='balls-container'>
         <div className='controls-spaced-evenly balls'>
-          <div className='control ball red' onClick={handlePocketRed}>
+          <button className='control ball red' onClick={handlePocketRed} disabled={isFinalStage}>
             <img src={red} alt='Red ball' />
-          </div>
+          </button>
         </div>
         <div className='controls balls'>
           <div className='controls no-wrap'>
-            <div className='control ball yellow' onClick={() => handlePocketColoredBall('yellow')}>
+            <button className='control ball yellow' onClick={() => handlePocketColoredBall('yellow')} disabled={disableButton(27)}>
               <img src={yellow} alt='Yellow ball' />
-            </div>
-            <div className='control ball green' onClick={() => handlePocketColoredBall('green')}>
+            </button>
+            <button className='control ball green' onClick={() => handlePocketColoredBall('green')} disabled={disableButton(25)}>
               <img src={green} alt='Green ball' />
-            </div>
-            <div className='control ball brown' onClick={() => handlePocketColoredBall('brown')}>
+            </button>
+            <button className='control ball brown' onClick={() => handlePocketColoredBall('brown')} disabled={disableButton(22)}>
               <img src={brown} alt='Brown ball' />
-            </div>
+            </button>
           </div>
           <div className='controls no-wrap'>
-            <div className='control ball blue' onClick={() => handlePocketColoredBall('blue')}>
+            <button className='control ball blue' onClick={() => handlePocketColoredBall('blue')} disabled={disableButton(18)}>
               <img src={blue} alt='Blue ball' />
-            </div>
-            <div className='control ball pink' onClick={() => handlePocketColoredBall('pink')}>
+            </button>
+            <button className='control ball pink' onClick={() => handlePocketColoredBall('pink')} disabled={disableButton(13)}>
               <img src={pink} alt='Pink ball' />
-            </div>
-            <div className='control ball black' onClick={() => handlePocketColoredBall('black')}>
+            </button>
+            <button className='control ball black' onClick={() => handlePocketColoredBall('black')} disabled={disableButton(7)}>
               <img src={black} alt='Black ball' />
-            </div>
+            </button>
           </div>
         </div>
       </div>
