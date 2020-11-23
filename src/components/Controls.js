@@ -4,12 +4,13 @@ import redoIcon from '../assets/images/redo.png';
 import restartIcon from '../assets/images/replay.png';
 import foul from '../assets/images/foul.png';
 import finishIcon from '../assets/images/finish.png';
-import historyIcon from '../assets/images/history.png';
+import optionsIcon from '../assets/images/options.png';
 import { useDispatch, useSelector } from 'react-redux';
 import confirm from '../assets/images/confirm.png';
 import cancel from '../assets/images/cancel.png';
 import { resetGame, restartFrame } from '../state/slices/game';
 import FoulPanel from './FoulPanel';
+import Options from './Options';
 import Modal from './Modal';
 
 const Controls = () => {
@@ -21,6 +22,7 @@ const Controls = () => {
   const [isEndGameModalOpen, setIsEndGameModalOpen] = useState(false);
   const [isRestartFrameModalOpen, setIsRestartFrameModalOpen] = useState(false);
   const [isFoulPanelModalOpen, setIsFoulPanelModalOpen] = useState(false);
+  const [isOptionsModalOpen, setIsOptionsModalOpen] = useState(true);
 
   const handleUndo = () => {
     if (pastLength > 0) {
@@ -50,8 +52,8 @@ const Controls = () => {
           </div>
 
           <div className='control show-breaks tooltip'>
-            <img src={historyIcon} alt='Show history' />
-            <span className="tooltiptext tooltiptext-bottom">Show history of breaks</span>
+            <img src={optionsIcon} alt='Options' onClick={() => setIsOptionsModalOpen(true)} />
+            <span className="tooltiptext tooltiptext-bottom">Options</span>
           </div>
         </div>
         <div className='controls no-wrap'>
@@ -104,6 +106,14 @@ const Controls = () => {
         isFoulPanelModalOpen ?
           <Modal setIsModalOpen={setIsFoulPanelModalOpen}>
             <FoulPanel setIsModalOpen={setIsFoulPanelModalOpen} />
+          </Modal>
+          :
+          null
+      }
+      {
+        isOptionsModalOpen ?
+          <Modal setIsModalOpen={setIsOptionsModalOpen}>
+            <Options setIsModalOpen={setIsOptionsModalOpen} />
           </Modal>
           :
           null

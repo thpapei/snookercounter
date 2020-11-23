@@ -1,24 +1,25 @@
-import options from '../options.json';
-const soundsEnabled = options['sounds-enabled']
-
-const noSoundUrl = require('../assets/sounds/nosound.mp3');
-
 const useConfirmAudio = () => {
   const audioUrl = require('../assets/sounds/confirm.mp3');
-  const audio = new Audio(soundsEnabled ? audioUrl : noSoundUrl);
+  const audio = new Audio(audioUrl);
   return audio;
 }
 
 const useCancelAudio = () => {
   const audioUrl = require('../assets/sounds/cancel.mp3');
-  const audio = new Audio(soundsEnabled ? audioUrl : noSoundUrl);
+  const audio = new Audio(audioUrl);
   return audio;
 }
 
 const useStartGameAudio = () => {
   const audioUrl = require('../assets/sounds/startgame.mp3');
-  const audio = new Audio(soundsEnabled ? audioUrl : noSoundUrl);
+  const audio = new Audio(audioUrl);
   return audio;
 }
 
-export { useConfirmAudio, useCancelAudio, useStartGameAudio };
+const useNoAudio = () => {
+  const audioUrl = require('../assets/sounds/nosound.mp3');
+  const audio = new Audio(audioUrl)
+  return audio;
+}
+
+export { useConfirmAudio, useCancelAudio, useStartGameAudio, useNoAudio };
