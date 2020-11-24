@@ -146,9 +146,15 @@ const gameSlice = createSlice({
     pocketColoredBall: (state, action) => {
       if (!state.isFreeBallStage) {
         state[state.activePlayerId].score += ballWorth[action.payload];
+
         // Decrement points only if game is in final stage (special care to not be in color stage of last red ball)
+        // because the colored ball needs to be respotted then and doesn't count against the last 27 points
         if (!state.isColorStage || !state.wasRedStage) {
-          state.pointsRemaining -= ballWorth[action.payload];
+
+          // Check for draw, in order to respot black
+          if (!(state.pointsRemaining === 7 && Math.abs(state['1'].score - state['2'].score) === 0)) {
+            state.pointsRemaining -= ballWorth[action.payload];
+          }
         }
 
         if (state.pointsRemaining > 27) {
