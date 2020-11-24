@@ -36,6 +36,7 @@ const FoulPanel = ({ setIsModalOpen }) => {
       <div className='free-ball'>
         <button className='control' onClick={handleFreeBall}><p className='free-ball-label'>Free Ball</p></button>
       </div>
+      <p className='tip'>Clicking on the Free-Ball button will immediately award one red ball and let you pocket a colored ball.</p>
       <div className='controls'>
         <p>Remove red ball</p>
         <input className='remove-red-checkbox' type='checkbox' onClick={() => setRemoveRedBallCheck(!removeRedBallCheck)} />
