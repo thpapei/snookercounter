@@ -8,6 +8,7 @@ const Player = ({ id }) => {
   const score = useSelector(state => state.game.present[`${id}`].score);
   const framesWon = useSelector(state => state.game.present[`${id}`].framesWon);
   const activePlayerId = useSelector(state => state.game.present.activePlayerId);
+  const gameStarted = useSelector(state => state.game.present.gameStarted)
 
   const handleNameChange = e => {
     dispatch(setPlayerName({ id, name: e.target.value }))
@@ -19,7 +20,7 @@ const Player = ({ id }) => {
 
   return (
     <div className='player_container'>
-      <div className={`player_score player${id} ${activePlayerId === id ? 'active' : null}`} onClick={handleActivePlayer} ><p>{score}</p></div>
+      <div className={`player_score player${id} ${activePlayerId === id && gameStarted ? 'active' : null}`} onClick={handleActivePlayer} ><p>{score}</p></div>
       <input className={`player${id}`} value={name} onChange={handleNameChange} placeholder={`Player ${id}`} />
       <div className='player_frames_won'>Frames Won: {framesWon}</div>
     </div>);
