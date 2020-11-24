@@ -60,7 +60,7 @@ const Information = () => {
                 setIsFrameWinnerModalOpen(false);
                 dispatch(nextFrame());
               }}><img src={confirm} /></button>
-              <button className='control cancel' onClick={() => setIsFrameWinnerModalOpen(false)}> <img src={cancel} /></button>
+              {/* <button className='control cancel' onClick={() => setIsFrameWinnerModalOpen(false)}> <img src={cancel} /></button> */}
             </div>
           </Modal>
           :
@@ -69,13 +69,13 @@ const Information = () => {
       {
         isGameWinnerModalOpen ?
           <Modal setIsModalOpen={setIsGameWinnerModalOpen}>
-            <h3>{player1.framesWon > player2.framesWon ? `${player1.name}` : `${player2.name}`} is the winner!</h3>
+            <h3>{player1.framesWon > player2.framesWon ? `${player1.name}` : `${player2.name}`} is the winner of the game!</h3>
             <div className='controls'>
               <button className='control confirm' onClick={() => {
                 setIsGameWinnerModalOpen(false);
                 dispatch(resetGame());
               }}><img src={confirm} /></button>
-              <button className='control cancel' onClick={() => setIsGameWinnerModalOpen(false)}> <img src={cancel} /></button>
+              {/* <button className='control cancel' onClick={() => setIsGameWinnerModalOpen(false)}> <img src={cancel} /></button> */}
             </div>
           </Modal>
           :
